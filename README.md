@@ -23,8 +23,7 @@ How to deal with the difference between components and TOC?
 
 ### 3.2. Retrive and label redundant feature requests
 @iscas-lee<br>
-@celia: what other keywords should we include?
-Keywords in the FR comments: 
+Keywords in the FR comments: What other keywords should we include?
 * DO: "does what you want"，"does exactly what is described here", "been done", "We do this via"
 * ALREADY: "already exist", "already support", "already add", "already been addressed", "support that already", "Already there"
 
