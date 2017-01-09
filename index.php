@@ -1,7 +1,12 @@
 <?php
+/**
+ * get all issues information from https://hibernate.atlassian.net.
+ * @author Gavin Lee <lishoubin@gmail.com>
+ */
+
 require_once("simple_html_dom.php");
 
-define("MAX_PAGE_NUM",1);
+define("MAX_PAGE_NUM",20);
 $issues = get_all_issue_keys();
 $result = array();
 foreach ($issues as $issue) {
