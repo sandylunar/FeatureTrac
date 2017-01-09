@@ -3,11 +3,18 @@
  * get all issues information from https://hibernate.atlassian.net.
  * @author Gavin Lee <lishoubin@gmail.com>
  */
-
+require_once("log.class.php");  
 require_once("simple_html_dom.php");
 
 define("MAX_PAGE_NUM",20);
+
+$log_path = './log/';  
+$log_file_name = 'debug.log';  
+$log= new Logs($log_path, $log_file_name);  
+
+$log->setLog("starting working ");
 $issues = get_all_issue_keys();
+$log->setLog(json_encode($issues));
 $result = array();
 foreach ($issues as $issue) {
 	$res = array();
@@ -16,11 +23,13 @@ foreach ($issues as $issue) {
 	$res[$issue['key']]['info'] = $info ;
 	$res[$issue['key']]['comments'] = $comments ;
 	$result[] = $res;
+	$log->setLog(json_encode($res));
 }
+$log->setLog("end, ready to write data into local file.");
 $myfile = fopen("result.txt", "w") or die("Unable to open file!");
 fwrite($myfile, json_encode($result));
 fclose($myfile);
-
+$log->setLog("save result success.");
 
 
 function get_issue_comments($issue_obj)
