@@ -6,7 +6,10 @@
 require_once("log.class.php");  
 require_once("simple_html_dom.php");
 
-define("MAX_PAGE_NUM",20);
+define("MAX_PAGE_NUM",108);
+
+date_default_timezone_set('PRC');
+echo date('Y-m-d H:i:s');
 
 $log_path = './log/';  
 $log_file_name = 'debug.log';  
@@ -14,9 +17,13 @@ $log= new Logs($log_path, $log_file_name);
 
 $log->setLog("starting working ");
 $issues = get_all_issue_keys();
+$issues_size = count($issues);
+$log->setLog("issues num = "+$issues_size);
 $log->setLog(json_encode($issues));
 $result = array();
+$count_size = 0;
 foreach ($issues as $issue) {
+	$count_size ++;
 	$res = array();
 	$info = get_issue_info($issue);
 	$comments = get_issue_comments($issue);
@@ -24,9 +31,11 @@ foreach ($issues as $issue) {
 	$res[$issue['key']]['comments'] = $comments ;
 	$result[] = $res;
 	$log->setLog(json_encode($res));
+	echo "--------------------------> progress ".(100.0 * $count_size / $issues_size)."%\r\n";
 }
+
 $log->setLog("end, ready to write data into local file.");
-$myfile = fopen("result.txt", "w") or die("Unable to open file!");
+$myfile = fopen("issues.info.".$issues_size, "w") or die("Unable to open file!");
 fwrite($myfile, json_encode($result));
 fclose($myfile);
 $log->setLog("save result success.");
