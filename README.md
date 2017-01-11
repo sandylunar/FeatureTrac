@@ -18,7 +18,7 @@ How to deal with the difference between components and TOC?
   3.4 Decide redundant feature request<br>
 
 ### 3.1 Collect 5393+ feature request data from Hibernate Community
-@iscas-lee will finish this before Jan 10 (Beijing Time) <br>
+@iscas-lee will finish this before Jan 11 (Beijing Time) <br>
 `Target repository`: https://hibernate.atlassian.net/browse/HHH-11370?filter=-4&jql=project%20in%20(OGM%2C%20HHH%2C%20HSEARCH%2C%20HBX%2C%20HV)%20AND%20issuetype%20in%20(Improvement%2C%20"New%20Feature"%2C%20"Remove%20Feature")%20order%20by%20created%20DESC<br>
 
 ### 3.2. Retrive and label redundant feature requests
